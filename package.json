@@ -12,6 +12,7 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "@types/react-router-dom": "^5.3.3",
+    "dotenv": "^16.0.0",
     "graphql": "^16.3.0",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
