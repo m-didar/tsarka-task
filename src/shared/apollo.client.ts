@@ -11,7 +11,6 @@ const getHeaders = (token: string) => {
 const createLink = (token: string) => {
     const httpLink = new HttpLink({
         uri: process.env.REACT_APP_GRAPHQL_API, // uri of endpoint
-        credentials: "include", // api is not the same domain
     })
 
     const authLink = new ApolloLink((operation, forward) => {

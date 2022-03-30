@@ -1,7 +1,8 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom"
 import { ApolloProvider } from "@apollo/client"
 import { useAppApolloClient } from '../../shared/apollo.client'
+import { useAccessToken } from "../../hooks/useToken"
 import Auth from '../../pages/auth/auth.page'
 import Main from '../../pages/main/main.page'
 import '../../shared/styles'

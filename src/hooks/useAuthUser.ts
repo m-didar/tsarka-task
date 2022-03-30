@@ -15,15 +15,11 @@ const AUTH_USER = gql`
     }
 `
 
-export const useAuthUser = (): ((
-    authUserInput: AuthUserInput
-) => any) => {
+export const useAuthUser = () => {
     const [_, setAccessToken] = useAccessToken()
-    const [login] = useMutation(AUTH_USER, {
+    return useMutation(AUTH_USER, {
         onCompleted: data => {
             setAccessToken(data.users.login.token.accessToken)
         },
     })
-
-    return login
 }
