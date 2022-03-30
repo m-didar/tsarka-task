@@ -1,4 +1,4 @@
-import {ApolloClient, ApolloLink, from, HttpLink, InMemoryCache} from "@apollo/client"
+import { ApolloClient, ApolloLink, from, HttpLink, InMemoryCache } from "@apollo/client"
 import { onError } from "@apollo/client/link/error"
 import { useAccessToken } from "../hooks/useToken"
 
@@ -15,12 +15,14 @@ const createLink = (token: string) => {
     })
 
     const authLink = new ApolloLink((operation, forward) => {
-        operation.setContext(({ headers = {} }) => ({
-            headers: {
-                ...headers,
-                ...getHeaders(token),
-            }
-        }))
+        if (token) {
+            operation.setContext(({headers = {}}) => ({
+                headers: {
+                    ...headers,
+                    ...getHeaders(token),
+                }
+            }))
+        }
         return forward(operation)
     }) // acts as middleware
 
@@ -44,7 +46,6 @@ const createLink = (token: string) => {
 
 export const useAppApolloClient = () => {
     const [token] = useAccessToken()
-    console.log(process.env)
     return new ApolloClient({
         link: createLink(token),
         cache: new InMemoryCache(),
