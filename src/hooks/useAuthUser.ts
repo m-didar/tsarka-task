@@ -1,6 +1,5 @@
 import { gql, useMutation } from "@apollo/client"
 import { useAccessToken } from "../hooks/useToken"
-import { AuthUserInput } from "../shared/models/user.model";
 
 const AUTH_USER = gql`
     mutation AuthUser($email: String!, $password: String!) {
